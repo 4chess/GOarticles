@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ .Title }}</title>
+    <style>
+        .main-link {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top link back to the main page -->
+    <div class="main-link">
+        <h1><a href="/">Back to Main Page</a></h1>
+    </div>
+
+    <h1>{{ .Title }}</h1>
+
+    {{ if .File }}
+    <div>
+        <h2>Attached File:</h2>
+        <!-- Displaying the file depending on its type -->
+        {{ if or (endswith .File ".jpg") (endswith .File ".png") (endswith .File ".gif") }}
+            <img src="/static/articles/{{ .File }}" alt="Attached Image">
+        {{ else if endswith .File ".mp3" }}
+            <audio controls>
+                <source src="/static/articles/{{ .File }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        {{ else if endswith .File ".mp4" }}
+            <video controls>
+                <source src="/static/articles/{{ .File }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        {{ end }}
+    </div>
+    {{ end }}
+
+    <div>
+        <h2>Message:</h2>
+        <p>{{ .Message }}</p>
+    </div>
+
+    <!-- Bottom link back to the main page -->
+    <div class="main-link">
+        <h1><a href="/">Back to Main Page</a></h1>
+    </div>
+
+</body>
+</html>

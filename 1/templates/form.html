@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Article Submission</title>
+</head>
+<body>
+    <h1>Submit an Article</h1>
+    <form action="/submit" method="post" enctype="multipart/form-data">
+        <div>
+            <input type="text" id="title" name="title" placeholder="Title (max 75 characters)" required maxlength="75">
+        </div>
+        <div>
+            <textarea id="message" name="message" placeholder="Message (max 200,000 characters)" required maxlength="200000"></textarea>
+        </div>
+        <div>
+            <label for="file">File (optional, mp3, mp4, jpg, png, gif):</label>
+            <input type="file" id="file" name="file" accept=".mp3, .mp4, .jpg, .png, .gif">
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <h2>Articles</h2>
+    <ul>
+        {{range .}}
+        <li><a href="/static/articles/{{.ID}}.html">{{.Title}}</a></li>
+        {{end}}
+    </ul>
+</body>
+</html>
+
