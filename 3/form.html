@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Article Upload</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <button id="newPostButton">New Post</button>
+
+    <div id="articleForm" style="display:none;">
+        <h2>Submit a New Article</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="text" name="title" placeholder="Title" required maxlength="75"><br>
+            <textarea name="message" placeholder="Message" required maxlength="999999"></textarea><br>
+            <input type="file" name="file" accept=".jpg, .jpeg, .png, .gif, .mp4, .mp3"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <h2>Available Articles</h2>
+    {{range .}}
+        <div class="article-card">
+            <a href="/articles/{{.ID}}">{{.Title}}</a>
+        </div>
+    {{else}}
+        <p>No articles available yet.</p>
+    {{end}}
+
+    <script>
+        document.getElementById("newPostButton").onclick = function() {
+            var form = document.getElementById("articleForm");
+            var button = document.getElementById("newPostButton");
+            if (form.style.display === "none") {
+                form.style.display = "block";
+                button.textContent = "Cancel";
+            } else {
+                form.style.display = "none";
+                button.textContent = "New Post";
+            }
+        };
+    </script>
+</body>
+</html>
