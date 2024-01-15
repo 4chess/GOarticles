@@ -1,0 +1,63 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header, main, footer {
+    padding: 20px;
+    margin: auto;
+    max-width: 800px;
+}
+
+.article-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.article-card a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.article-card a:hover {
+    text-decoration: underline;
+}
+
+.article-image, .article-video {
+    width: 400px;
+    height: 400px;
+    object-fit: cover; /* Maintains the aspect ratio while covering the area */
+}
+
+.article-content {
+    text-align: justify;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+}
+
+@media (max-width: 600px) {
+    .article-content, header, footer, .article-image, .article-video, .article-card {
+        width: 100%; /* Makes content responsive on smaller screens */
+        height: auto;
+    }
+
+    .article-image, .article-video {
+        max-width: 100%;
+        max-height: 400px;
+    }
+}

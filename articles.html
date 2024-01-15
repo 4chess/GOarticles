@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <header>
+        <a href="/" style="display: block; margin-bottom: 20px;">Return to Main Page</a>
+        <h1>{{.Title}}</h1>
+    </header>
+    <main>
+        {{if .Image}}
+            <img src="{{.Image}}" alt="Uploaded Image" class="article-image">
+        {{end}}
+        {{if .Video}}
+            <video controls class="article-video">
+                <source src="{{.Video}}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        {{end}}
+        {{if .Audio}}
+            <audio controls class="article-audio">
+                <source src="{{.Audio}}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        {{end}}
+        <p class="article-content">{{.Content}}</p>
+    </main>
+    <footer>
+        <a href="/">Return to Main Page</a>
+    </footer>
+</body>
+</html>
